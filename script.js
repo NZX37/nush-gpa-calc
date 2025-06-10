@@ -51,22 +51,17 @@ function courseTypeInt(courseObj) {
         "ML", "PJ", "TH", "TL"
     ];    
 
-    switch (courseObj.type.trim()) {
-        case "Core":
-            if (MTLdepts.includes(courseObj.department.trim())) return 5;
-            else return 1;
-
-        case "Elective": 
-            return 2;
-        
-        case "Enrichment":
-            return 3;
-
-        case "Honours":
-            return 4;
-    
-        default:
-            return 0;
+    if (courseObj.type.includes("Core")) {
+        if (MTLdepts.includes(courseObj.department.trim())) return 5;
+        else return 1;
+    } else if (courseObj.type.includes("Elective")) {
+        return 2;
+    } else if (courseObj.type.includes("Enrichment")) {
+        return 3;
+    } else if (courseObj.type.includes("Honours")) {
+        return 4;
+    } else {
+        return 0;
     }
 }
 
@@ -130,10 +125,11 @@ function genTableRow(courseObj) {
             o.textContent = x;
             return o;
         }
-        for (let i=0; i<=5; i+=.5) {
+        for (let i=5; i>=0; i-=.5) {
             gpaInput.append(newOpt(i.toFixed(1)));
             gpaInput.lastElementChild.setAttribute("value", i.toFixed(1));
         }
+        gpaInput.lastElementChild.setAttribute("selected", "");
         gpaHolder.append(gpaInput);
         gpaInput.addEventListener("change", () => { checkbox.checked = true; });
         gpaInput.addEventListener("change", calculateGPA);
@@ -221,8 +217,7 @@ function calculateGPA() {
         gpa = totalGradePoints / totalUnits;
     }
 
-    document.getElementById('gpa-value').textContent = gpa.toFixed(2); // Display GPA to 2 decimal places
+    document.getElementById('gpa-value').textContent = gpa.toFixed(1); // Display GPA to 2 decimal places
 }
 
-// Calculate GPA on initial page load
-document.addEventListener('DOMContentLoaded', calculateGPA);
+calculateGPA();

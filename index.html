@@ -47,13 +47,13 @@
     <div id="options-container">
         <p>
             Class of
-            <select id="co-year">
+            <select disabled id="co-year">
                 <option>Please wait!</option>
-            </select>
+            </select> (Graduation Year)
         </p>
         <p>
             Grade:
-            <select id="grade-year">
+            <select disabled id="grade-year">
                 <option value="1">Year 1</option>
                 <option value="2">Year 2</option>
                 <option value="3">Year 3</option>
@@ -63,8 +63,8 @@
             </select>
         </p>
         <p>
-            Include 
-            <select id="sem-option">
+            Show 
+            <select disabled id="sem-option">
                 <option value="[1]">Sem 1</option>
                 <option value="[1, 2]">Sem 1 &amp; 2</option>
             </select>
@@ -74,6 +74,7 @@
     
 
     <div class="gpa-main">
+        <p>Use the checkbox <input type="checkbox" checked> to control whether that course is included in the final GPA calculation.</p>
         <table>
             <thead>
                 <tr>
@@ -105,7 +106,7 @@
     </script>
 
     <noscript style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box; background: #ff7777; color: black; padding: 10px;">
-        Sorry, your browser doesn't support JavaScript. Make sure you have JavaScript enabled (see <a href="https://www.whatismybrowser.com/guides/how-to-enable-javascript/">this site</a> for an example how).
+        Sorry, your browser doesn't support JavaScript. Make sure you have JavaScript enabled (see <a href="https://www.whatismybrowser.com/guides/how-to-enable-javascript/">this site</a> for a guide as to how).
     </noscript>
 </body>
 </html>
