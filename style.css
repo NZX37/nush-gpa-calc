@@ -37,16 +37,9 @@ th, td {
 th {
     background-color: #f2f2f2;
 }
-.grade-input, .unit-input {
-    width: 70px;
-    padding: 5px;
-    box-sizing: border-box;
-}
-.elective-select {
-    padding: 5px;
-}
 .gpa-main {
     position: relative;
+    height: 100%;
 }
 .gpa-result {
     font-size: 1.5em;
