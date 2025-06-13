@@ -91,8 +91,8 @@
             </tbody>
         </table>
 
-        <p class="small">
-            Courses with a <span class="strike bold">cancelled</span> course code indicate that that course does not count towards the GPA.
+        <p>
+            Courses with a <span class="strike bold">cancelled</span> course code indicate that that course does not count towards the GPA - these courses do not have a grade point selector either.
             <br>
             GPA is always rounded to one decimal place.
         </p>
@@ -101,6 +101,33 @@
             Your Calculated GPA: <span id="gpa-value">0.00</span>
         </div>
     </div>
+
+    <div class="explanation">
+        <h2>How does this work?</h2>
+        <p>
+            This calculator pulls data from the <a href="https://github.com/gohjy/nush-pos-data" target="_blank">nush-pos-data</a> repository on GitHub, and uses the information you provide in the drop-down to filter the courses. 
+            <br>
+            If you'd like to see the source code, it's in the <a href="https://github.com/gohjy/nush-gpa-calc" target="_blank">nush-gpa-calc</a> repository on GitHub.
+            <br>
+            <span class="bold">
+                Nothing that you enter here ever leaves your device.
+            </span>
+        </p>
+        <h2>How accurate is this?</h2>
+        <p>
+            In theory it should be 100% accurate, but there may be errors in the code.
+            You'd probably want to check by yourself just to be sure - this tool just exists to make your life easier if you want a quick calculation.
+        </p>
+        <h2>Is this an official school product?</h2>
+        <p>
+            No.
+        </p>
+        <br>
+    </div>
+
+    <p class="small">
+        Credits: GPA Calculator by LXYSGP, this version by gohjy
+    </p>
 
     <script src="./script.js" type="module"></script>
     <script nomodule>

@@ -1,10 +1,10 @@
 // Initialise
 window.addEventListener("error", (ev) => {
-    alert(`Oops, something went wrong! Error: ${JSON.stringify(ev)}`);
+    alert(`Oops, something went wrong! Error: ${ev.message}`);
 })
 
 window.addEventListener("unhandledrejection", (ev) => {
-    alert(`Oops, something went wrong! Error: ${JSON.stringify(ev)}`);
+    alert(`Oops, something went wrong! Error: ${ev.message}`);
 })
 
 const coPicker = document.querySelector("#co-year");
