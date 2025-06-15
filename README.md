@@ -20,5 +20,8 @@ Not right now, but I might make one in the future. No plans yet though.
 ## Hold up, isn't POS data school confidential?
 Nope, it's on the school's website [here](https://www.nushigh.edu.sg/studying-at-nus-high/the-nus-high-diploma/programme-of-studies/).
 
+## Who made this?
+The site was first made by @nushhw (who has since taken down their repo). I improved it to pull the POS data instead of hardcoding the course data in.
+
 ## Wait... I have another question!
 You're probably better off not asking. Like I said, this is not official, you don't need to worry so much about it. 
