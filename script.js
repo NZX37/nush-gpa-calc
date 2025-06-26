@@ -100,11 +100,14 @@ function genTableRow(courseObj) {
     row.setAttribute("data-course-id", courseObj.code.trim());
     row.setAttribute("data-course-type", courseTypeInt(courseObj));
 
+    const isCourseGPAd = isGPAd(courseObj);
+
     const checkboxHolder = newTd();
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkboxHolder.append(checkbox);
     checkbox.checked = courseTypeInt(courseObj) === 1 && courseObj.department !== "DV";
+    checkbox.disabled = !isCourseGPAd && !checkbox.checked;
     checkbox.addEventListener("change", calculateGPA);
     checkbox.classList.add("include-course-check");
 
@@ -117,7 +120,7 @@ function genTableRow(courseObj) {
     const unitHolder = newTd(+courseObj.mcs);
 
     const gpaHolder = newTd();
-    if (isGPAd(courseObj)) {
+    if (isCourseGPAd) {
         const gpaInput = document.createElement("select");
         gpaInput.classList.add("your-gp");
         const newOpt = x => {
@@ -126,6 +129,7 @@ function genTableRow(courseObj) {
             return o;
         }
         for (let i=5; i>=0; i-=.5) {
+            if (i === .5) continue; // There is literally no way you can get 0.5 points for a course
             gpaInput.append(newOpt(i.toFixed(1)));
             gpaInput.lastElementChild.setAttribute("value", i.toFixed(1));
         }
