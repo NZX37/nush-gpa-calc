@@ -100,14 +100,16 @@ function genTableRow(courseObj) {
     row.setAttribute("data-course-id", courseObj.code.trim());
     row.setAttribute("data-course-type", courseTypeInt(courseObj));
 
-    const isCourseGPAd = isGPAd(courseObj);
+    const isBridging = !!courseObj.title.match(/\bbridging\b/i);
+
+    const isCourseGPAd = isGPAd(courseObj) || isBridging;
 
     const checkboxHolder = newTd();
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkboxHolder.append(checkbox);
     checkbox.checked = courseTypeInt(courseObj) === 1 && courseObj.department !== "DV";
-    checkbox.disabled = !isCourseGPAd && !checkbox.checked;
+    checkbox.disabled = !isCourseGPAd && !checkbox.checked && !isBridging;
     checkbox.addEventListener("change", calculateGPA);
     checkbox.classList.add("include-course-check");
 
