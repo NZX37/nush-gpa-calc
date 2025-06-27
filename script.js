@@ -65,6 +65,10 @@ function courseTypeInt(courseObj) {
     }
 }
 
+function isMajor(courseObj) {
+    return !!courseObj.type.match(/\(Major\)/i)
+}
+
 function isSemOk(posSem, accept2=false) {
     // Calling with accept2 = true means that you're searching for Sem 1 and 2 courses (half- or full-year)
     // Calling with accept2 = false means that only Sem-1 only courses and full-year courses included
@@ -108,7 +112,7 @@ function genTableRow(courseObj) {
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkboxHolder.append(checkbox);
-    checkbox.checked = courseTypeInt(courseObj) === 1 && courseObj.department !== "DV";
+    checkbox.checked = courseTypeInt(courseObj) === 1 && courseObj.department !== "DV" && !isMajor(courseObj);
     checkbox.disabled = !isCourseGPAd && !checkbox.checked && !isBridging;
     checkbox.addEventListener("change", calculateGPA);
     checkbox.classList.add("include-course-check");
@@ -161,7 +165,7 @@ async function loadTable() {
     posData.sort((a, b) => {
         let aC = courseTypeInt(a);
         let bC = courseTypeInt(b);
-        return aC - bC;
+        return (aC*2+isMajor(a)) - (bC*2+isMajor(b));
     });
 
     console.log(posData);
