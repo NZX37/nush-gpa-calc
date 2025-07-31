@@ -1,132 +1,84 @@
-.small { font-size: 0.8em; }
-.bold { font-weight: bold; }
-.italic { font-style: italic; }
-.uline { text-decoration-line: underline; }
-.strike { text-decoration-line: line-through; }
-.normal { font-weight: normal; font-style: normal; text-decoration-line: none; }
-
-:where(select, option, button, input) {
-    font-size: inherit;
-    font-family: inherit;
-    color: inherit;
+body:not(.show) {
+  display: none !important;
 }
-:is(select, option):not([disabled], [disabled] *) { cursor: pointer; }
-input[type="checkbox"]:not([disabled]) { cursor: pointer; }
+
+:root {
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --gradient: linear-gradient(to right, #ff66c4, #ffde59);
+}
+
+* {
+  font-family: var(--font-family);
+  box-sizing: border-box;
+}
+
+:is(option,button,input,select,optgroup,textarea) {
+  font-family: var(--font-family);
+  font-size: inherit;
+}
+
+html {
+  height: auto;
+  min-height: 100%;
+  overflow-y: auto;
+
+  color-scheme: light;
+}
+
+html, body {
+  width: 100%;
+  margin: 0;
+}
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 20px;
-    background-color: #f4f4f4;
-    color: #000000
-}
-h1, h2 {
-    color: #333;
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-th {
-    background-color: #f2f2f2;
-}
-.gpa-main {
-    position: relative;
-    height: 100%;
-}
-.gpa-result {
-    font-size: 1.5em;
-    color: #007bff;
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #e9f5ff;
-    border-radius: 5px;
-    position: sticky;
-    bottom: 20px;
-    box-shadow: #00000088 0 0 10px 5px;
-}
-#gpa-value {
-    font-weight: bold;
-}
-.grade-point-guide {
-    margin-top: 30px;
-    padding: 15px;
-    background-color: #fff8e1;
-    border-left: 5px solid #ffecb3;
-    margin-bottom: 20px;
-}
-.grade-point-guide summary {
-    color: #fb8c00;
-    cursor: pointer;
-}
-.grade-point-guide h3 {
-    margin-top: 0;
-    display: inline;
-}
-.grade-point-guide table {
-    width: auto;
-    margin-top: 10px;
-}
-.grade-point-guide th, .grade-point-guide td {
-    padding: 5px 10px;
+  height: 100%;
+  background: url('../assets/imgs/front-gate.JPG');
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
-
-#course-list tr:has(> td:first-child input[type="checkbox"]:not(:checked)) {
-    color: #777777;
+h1 {
+  color: teal;
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
 }
 
-#course-list tr:not(:has(select)) td:not(:first-child):nth-child(2) {
-    text-decoration-line: line-through;
+.btn {
+  display: block;
+  width: 100%;
+  padding: 1em;
+  font-size: 1em;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 0.6em 0;
+  transition: all 0.3s ease;
+  background-color: #008080;
+  text-decoration: none;
+}
+a:is(:has(.btn:first-child)):is(:has(.btn:last-child)) {
+  text-decoration: none;
+  color: inherit;
 }
 
-#course-list td:has(.include-course-check), thead:has(+ #course-list) th:first-child {
-    text-align: center;
+.btn[disabled], .btn[disabled]:hover {
+  background: none;
+  background-color: #888888;
+  color: #dddddd;
+  cursor: default;
 }
 
-
-@media (max-width: 620px) {
-    thead:has(+ #course-list) {
-        display: none;
-    }
-
-    #course-list td:is(:nth-child(1), :nth-child(2)) {
-        display: inline-block;
-        border: none;
-        font-weight: bold;
-    }
-
-    #course-list td:not(:nth-child(1), :nth-child(2)) {
-        display: block;
-        border-left: none;
-        border-right: none;
-        border-top-width: 0;
-    }
-
-    #course-list td:nth-child(3) {
-        border-top-width: 1px;
-    }
-
-    #course-list td:nth-child(4)::after {
-        content: " Course";
-    }
-
-    #course-list td:nth-child(5)::after {
-        content: " Units";
-    }
-
-    #course-list td:nth-child(6)::before {
-        content: "Your Grade : ";
-    }
-
-    #course-list {
-        border: 1px solid #ddd;
-    }
+.invisible {
+  display: none;
 }
+
+.big { font-size: 2em; }
+.semibig { font-size: 1.5em; }
+.bold { font-weight: bold; }
+.textleft { text-align: left !important; }
+.textcent { text-align: center !important; }
+.grey { color: #555555; }
+.small { font-size: .8em; }
+.inlineblock { display: inline-block;}
+.block { display: block;}
